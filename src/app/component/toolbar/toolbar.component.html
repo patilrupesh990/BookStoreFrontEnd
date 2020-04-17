@@ -1,0 +1,26 @@
+<mat-toolbar
+  class="container docs-navbar-header"
+  style="background-color: rgba(131, 4, 4, 0.829); height: 80px;"
+  fullscreen
+>
+  <mat-toolbar-row>
+    <img src="assets\booklogo_1_45x45.png" class="logo" />
+    <span class="title">BookStore</span>
+    <div class="search">
+      <mat-card>
+        <div class="searchicon">
+          <mat-icon style="font-size: 30px;" prefix>search</mat-icon>
+        </div>
+        <div class="searchboxinput">
+          <input
+            type="text"
+            placeholder="Search"
+            [(ngModel)]="title"
+            (input)="searchNote()"
+            style="height: 40px; width: 800px;"
+          />
+        </div>
+      </mat-card>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
