@@ -16,6 +16,7 @@ export class UserLoginComponent implements OnInit {
   showSpinner = false;
   loginForm: FormGroup;
   hide = true;
+  userPage = "user";
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -41,7 +42,6 @@ export class UserLoginComponent implements OnInit {
   onloginSubmit() {
     this.showSpinner = true;
     console.log("---------------------------------------");
-
     this.userservice.loginUser(this.loginForm.value).subscribe(
       (response) => {
         console.log(response);
@@ -50,15 +50,39 @@ export class UserLoginComponent implements OnInit {
         });
 
         sessionStorage.setItem("token", response.token);
-        sessionStorage.setItem("response", response.response);
-        sessionStorage.setItem("uname", response.userName);
-        this.router.navigate(["dashboard"]);
+        sessionStorage.setItem("lastName", response.lastName);
+        sessionStorage.setItem("firstName", response.firstName);
+        this.router.navigate(["dashboard", 1]);
         this.showSpinner = false;
       },
       (error: any) => {
         this.showSpinner = false;
-        console.log(error.error.token);
-        this.matSnackBar.open(error.error.token, "ok", { duration: 3000 });
+        console.log(error.error.response);
+        this.matSnackBar.open(error.error.response, "ok", {
+          duration: 3000,
+        });
+      }
+    );
+  }
+  onAdminLoginSubmit() {
+    this.showSpinner = true;
+    console.log("---------------------------------------");
+    this.userservice.loginAdmin(this.loginForm.value).subscribe(
+      (response) => {
+        this.matSnackBar.open("Successfully Loged In Wellcome", "ok", {
+          duration: 5000,
+        });
+        sessionStorage.setItem("token", response.token);
+        sessionStorage.setItem("lastName", response.lastName);
+        sessionStorage.setItem("firstName", response.firstName);
+        this.router.navigate(["dashboard", 2]);
+        this.showSpinner = false;
+      },
+      (error: any) => {
+        this.showSpinner = false;
+        this.matSnackBar.open(error.error.response, "ok", {
+          duration: 3000,
+        });
       }
     );
   }

@@ -15,11 +15,7 @@
     >
       <h2>Book Store</h2>
     </mat-card-title>
-    <form
-      [formGroup]="loginForm"
-      (ngSubmit)="loginForm.valid && onloginSubmit()"
-      noval
-    >
+    <form [formGroup]="loginForm" (ngSubmit)="(loginForm.valid)" noval>
       <mat-card-content fxLayout="column">
         <mat-card-subtitle
           style="
@@ -95,16 +91,30 @@
         </mat-form-field>
       </mat-card-content>
 
-      <mat-card-actions align="end">
-        <button
-          [disabled]="!loginForm.valid"
-          style="font-size: 20px; font-weight: bold; color: whitesmoke;"
-          mat-button
-          type="submit"
-          class="divider"
-        >
-          Login
-        </button>
+      <mat-card-actions class="button-container" align="end">
+        <div class="login-button">
+          <button
+            [disabled]="!loginForm.valid"
+            style="font-size: 20px; font-weight: bold; color: whitesmoke;"
+            mat-button
+            type="submit"
+            class="divider"
+            (click)="onloginSubmit()"
+          >
+            Login As User
+          </button>
+        </div>
+        <div>
+          <button
+            [disabled]="!loginForm.valid"
+            style="font-size: 20px; font-weight: bold; color: whitesmoke;"
+            mat-button
+            class="divider"
+            (click)="onAdminLoginSubmit()"
+          >
+            Login As Admin
+          </button>
+        </div>
       </mat-card-actions>
       <div style="display: flex; justify-content: space-between;">
         <a href="http://localhost:4200/register" style="font-size: 20px;"

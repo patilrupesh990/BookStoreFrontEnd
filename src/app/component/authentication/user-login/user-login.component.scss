@@ -53,9 +53,17 @@
   margin-top: 10 px !important ;
   background-color: rgb(4, 4, 247);
   margin: 20px 10px;
-  width: 100%;
+  width: auto;
   height: 50px;
   text-decoration-color: white;
+}
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.login-button {
+  justify-self: flex-start;
 }
 
 .list-viewer-wrapper {
