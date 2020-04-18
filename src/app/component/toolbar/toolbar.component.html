@@ -22,5 +22,74 @@
         </div>
       </mat-card>
     </div>
+    <div class="cart">
+      <a
+        ><img
+          src="assets\cart-icon-png-26.jpg"
+          style="
+            margin-left: 80px;
+            margin-top: 15px;
+            color: grey;
+            height: 50px;
+            width: 50px;
+            padding-left: 0.5em;
+          "
+      /></a>
+    </div>
+    <div class="last-icon">
+      <a
+        ><img
+          [matMenuTriggerFor]="vertebrates"
+          src="assets\account_circle-24px.svg"
+          style="
+            margin-left: 80px;
+            color: grey;
+            height: 50px;
+            width: 50px;
+            margin-top: 20px;
+            padding-left: 0.5em;
+          "
+      /></a>
+
+      <div style="width: 10em;">
+        <mat-menu #vertebrates="matMenu" class="menuStyle" style="width: auto;">
+          <div class="div-profilepic">
+            <div class="image-upload">
+              <label for="file-input">
+                <img
+                  src="assets\profilePic.jpg"
+                  style="
+                    height: 110px;
+                    width: 110px;
+                    padding: 0px;
+                    margin: 0px;
+                  "
+                />
+              </label>
+              <input id="file-input" type="file" />
+            </div>
+          </div>
+          <div class="profile-content">
+            <div>
+              <h3 style="color: rgb(65, 64, 64);">{{ name }}</h3>
+              <h4 style="color: rgb(71, 82, 94);">{{ uName }}</h4>
+            </div>
+          </div>
+
+          <div class="div-profile">
+            <div class="div-signout">
+              <button
+                [routerLink]="['']"
+                (click)="onClickClear()"
+                mat-button
+                class="signout-button"
+              >
+                Signout
+              </button>
+            </div>
+          </div>
+        </mat-menu>
+      </div>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
