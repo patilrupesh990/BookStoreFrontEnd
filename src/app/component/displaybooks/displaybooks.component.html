@@ -25,7 +25,9 @@
       </form>
     </div>
   </div>
-
+  <div class="addbook" *ngIf="isSeller">
+    <button class="btn-addbook" (click)="openDialog()">ADD BOOK</button>
+  </div>
   <div class="list-books">
     <div
       class="getAllNotes"
@@ -52,9 +54,30 @@
           ><div class="bookname">{{ book.bookName }}</div>
           <div class="authorname">by {{ book.authorName }}</div>
           <div class="price">Rs. {{ book.price }}</div>
-          <div class="cart-buttons">
-            <div><button class="addtobag">ADD TO BAG</button></div>
+          <div class="availablity">Available Books: {{ book.quantity }}</div>
+          <div class="cart-buttons" *ngIf="isUser">
+            <div>
+              <button
+                [style.background-color]="toggle ? 'green' : 'red'"
+                class="addtobag"
+                (click)="addToBag(book.bookId, book.quantity)"
+              >
+                ADD TO BAG
+              </button>
+            </div>
             <div><button class="wishlist">WISHLIST</button></div>
+          </div>
+          <div class="cart-buttons" *ngIf="isSeller">
+            <div>
+              <button class="addtobag" (click)="deleteBook(book.bookId)">
+                DELETE BOOK
+              </button>
+            </div>
+            <div>
+              <button class="wishlist" (click)="openDialog2()">
+                UPDATE BOOK
+              </button>
+            </div>
           </div>
         </mat-card-content>
       </mat-card>

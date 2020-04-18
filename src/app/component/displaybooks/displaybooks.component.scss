@@ -80,6 +80,14 @@ mat-card-title {
   font-weight: bolder;
   color: rgb(8, 8, 8);
 }
+.availablity {
+  margin-left: 20px;
+  margin-bottom: 12px;
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  color: rgb(8, 8, 8);
+}
 .cart-buttons {
   display: flex;
   flex-direction: row;
@@ -88,16 +96,24 @@ mat-card-title {
   padding-bottom: 20px;
   justify-content: space-between;
 }
+
+.btn-addbook {
+  height: 50px;
+  width: 120px;
+  margin-left: 10px;
+  color: white;
+  background-color: rgba(131, 4, 4, 0.829);
+}
 .addtobag {
   color: white;
   background-color: rgba(131, 4, 4, 0.829);
   height: 35px;
-  width: 100px;
+  width: auto;
   border: none;
 }
 .wishlist {
   height: 35px;
   margin-left: 10px;
-  width: 80px;
+  width: auto;
   background-color: white;
 }
