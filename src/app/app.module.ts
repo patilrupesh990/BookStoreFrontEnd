@@ -32,6 +32,9 @@ import { DashboardComponent } from "./component/dashboard/dashboard.component";
 import { DisplaybooksComponent } from "./component/displaybooks/displaybooks.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { AddbookComponent } from "./component/addbook/addbook.component";
+import { MatMenuModule } from "@angular/material/menu";
+import { UpdateBookComponent } from "./component/update-book/update-book.component";
 
 @NgModule({
   declarations: [
@@ -41,6 +44,8 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     ToolbarComponent,
     DashboardComponent,
     DisplaybooksComponent,
+    AddbookComponent,
+    UpdateBookComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,9 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     NgxSpinnerModule,
     FlexLayoutModule,
     MatTooltipModule,
+    MatMenuModule,
   ],
+  entryComponents: [AddbookComponent, UpdateBookComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
