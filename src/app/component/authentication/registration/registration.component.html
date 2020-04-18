@@ -15,11 +15,7 @@
     >
       <h2>Sign Up</h2>
     </mat-card-title>
-    <form
-      [formGroup]="registerForm"
-      (ngSubmit)="registerForm.valid && onRegisterSubmit()"
-      noval
-    >
+    <form [formGroup]="registerForm" (ngSubmit)="(registerForm.valid)" noval>
       <mat-card-content>
         <ngx-spinner
           *ngIf="showSpinner"
@@ -254,23 +250,37 @@
             <mat-radio-button value="other">Other</mat-radio-button>
           </mat-radio-group>
         </div>
-        <mat-card-actions align="end">
-          <button
-            style="font-size: 20px; font-weight: bold; color: whitesmoke;"
-            [disabled]="!registerForm.valid"
-            mat-button
-            type="submit"
-            class="divider"
-          >
-            Register
-          </button>
+        <mat-card-actions class="button-container" align="end">
+          <div>
+            <button
+              style="font-size: 20px; font-weight: bold; color: whitesmoke;"
+              [disabled]="!registerForm.valid"
+              mat-button
+              type="submit"
+              class="divider"
+              (click)="onSellerRegisterSubmit()"
+            >
+              Register As a Seller
+            </button>
+          </div>
+          <div>
+            <button
+              style="font-size: 20px; font-weight: bold; color: whitesmoke;"
+              [disabled]="!registerForm.valid"
+              mat-button
+              type="submit"
+              class="divider"
+              (click)="onRegisterSubmit()"
+            >
+              Register As a User
+            </button>
+          </div>
         </mat-card-actions>
         <a
           href="#"
           style="
             align-content: space-around;
-            padding-top: 2px;
-            margin-top: 2px;
+            margin-top: 1px;
             padding-bottom: 20px;
             margin-bottom: 20px;
             font-size: 25px;

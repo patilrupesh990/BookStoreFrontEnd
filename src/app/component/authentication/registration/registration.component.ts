@@ -100,6 +100,32 @@ export class RegistrationComponent implements OnInit {
       return;
     }
   }
+
+  onSellerRegisterSubmit() {
+    this.showSpinner = true;
+    this.userservice.registerSeller(this.registerForm.value).subscribe(
+      (user) => {
+        this.router.navigate([""]);
+        this.showMsg = true;
+        this.submitted = true;
+        this.matSnackBar.open(
+          "Registration Successfull Please Verify Account Before Login",
+          "ok",
+          { duration: 4000 }
+        );
+        this.showSpinner = false;
+      },
+      (error: any) => {
+        this.showSpinner = false;
+        this.matSnackBar.open(error.error, "ok", { duration: 4000 });
+        console.log(error);
+      }
+    );
+    if (this.registerForm.invalid) {
+      return;
+    }
+  }
+
   get f() {
     return this.registerForm.controls;
   }
