@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: "register", component: RegistrationComponent },
   { path: "", component: UserLoginComponent },
   {
-    path: "dashboard",
+    path: "dashboard/:id",
     component: DashboardComponent,
     children: [{ path: "", component: DisplaybooksComponent }],
   },
