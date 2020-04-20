@@ -1,0 +1,94 @@
+.container {
+  margin-top: 5px;
+  height: auto;
+  width: auto;
+}
+.mat-table {
+  height: auto;
+  width: auto;
+  background-color: lavender;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 480px;
+}
+.header-block {
+  background-color: rgba(214, 206, 206, 0.829);
+  border: none;
+  width: 18rem;
+  color: white;
+  height: 2rem;
+  font-size: 1.5rem;
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-weight: bolder;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  align-content: center;
+  padding: 20px 20px 20px 80px;
+}
+.rows-blocks {
+  background-color: whitesmoke;
+  border: 1px thin black;
+  color: rgb(6, 155, 38);
+  height: 0.8rem;
+  font-size: 1rem;
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-weight: bolder;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  align-content: center;
+  padding: 20px 20px 20px 80px;
+}
+rows-blocks total {
+  display: flex;
+}
+.checkout {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+.container-fa {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  width: 22%;
+  background-color: rgb(202, 196, 196);
+}
+.fa {
+  font-size: xx-large;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bolder;
+  color: red;
+  margin-right: 30px;
+}
+.fa-value {
+  font-size: xx-large;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bolder;
+  color: rgb(101, 5, 131);
+}
+button {
+  height: 60px;
+  width: 200px;
+  border: none;
+  background-color: rgba(4, 161, 17, 0.972);
+  color: whitesmoke;
+  font-size: larger;
+  font-weight: bolder;
+}
+.ch-btn {
+  margin-right: 20rem;
+}
