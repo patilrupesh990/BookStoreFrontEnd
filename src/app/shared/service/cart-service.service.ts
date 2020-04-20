@@ -17,4 +17,11 @@ export class CartServiceService {
       { headers: new HttpHeaders().set("token", sessionStorage.token) }
     );
   }
+
+  getCartList(): Observable<any> {
+    return this.httpservice.get(
+      `${environment.cartApiUrl}/${environment.cartList}`,
+      { headers: new HttpHeaders().set("token", sessionStorage.token) }
+    );
+  }
 }
