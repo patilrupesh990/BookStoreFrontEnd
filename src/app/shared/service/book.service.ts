@@ -1,10 +1,15 @@
 import { Injectable } from "@angular/core";
 import { HttpService } from "./http.service";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpEvent,
+  HttpEventType,
+} from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { Book } from "../model/book.model";
-import { tap } from "rxjs/operators";
+import { tap, map, catchError } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -43,6 +48,46 @@ export class BookService {
           this._autoRefresh$.next();
         })
       );
+  }
+
+  uploadBookImage(bookId, imageData, formData): Observable<any> {
+    return this.httpservice
+      .post(
+        `${environment.bookApiUrl}/${environment.addBookImage}?bookId=${bookId}`,
+        formData,
+        {
+          headers: new HttpHeaders().set("token", sessionStorage.token),
+          reportProgress: true,
+          observe: "events",
+        }
+      )
+      .pipe(
+        tap(() => {
+          this._autoRefresh$.next();
+        })
+      );
+  }
+
+  private getEventMessage(event: HttpEvent<any>, formData) {
+    switch (event.type) {
+      case HttpEventType.UploadProgress:
+        return this.fileUploadProgress(event);
+      case HttpEventType.Response:
+        return this.apiResponse(event);
+      default:
+      // return `File "${formData.get("image").name}" supricing upload event:${
+      //   event.type
+      // }.`;
+    }
+  }
+
+  private apiResponse(event) {
+    return event.body;
+  }
+
+  private fileUploadProgress(event) {
+    const percentageDone = Math.round((100 * event.loaded) / event.total);
+    return { status: "progress", message: percentageDone };
   }
 
   deleteBook(bookId): Observable<any> {
