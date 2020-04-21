@@ -22,6 +22,7 @@ import {
   MatOption,
   MatOptionModule,
   MatSelectModule,
+  MatTableModule,
 } from "@angular/material";
 import { ReactiveFormsModule, FormBuilder, FormsModule } from "@angular/forms";
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -35,6 +36,13 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { AddbookComponent } from "./component/addbook/addbook.component";
 import { MatMenuModule } from "@angular/material/menu";
 import { UpdateBookComponent } from "./component/update-book/update-book.component";
+import { ActivateUserComponent } from "./component/authentication/activate-user/activate-user.component";
+import { BooksCartComponent } from "./component/books-cart/books-cart.component";
+import { UpdatePriceComponent } from "./component/update-book/update-price/update-price.component";
+import { BookAddToBagComponent } from "./component/book-add-to-bag/book-add-to-bag.component";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from "@angular/material/sort";
+import { UploadBookimageComponent } from "./component/addbook/upload-bookimage/upload-bookimage.component";
 
 @NgModule({
   declarations: [
@@ -46,6 +54,11 @@ import { UpdateBookComponent } from "./component/update-book/update-book.compone
     DisplaybooksComponent,
     AddbookComponent,
     UpdateBookComponent,
+    ActivateUserComponent,
+    BooksCartComponent,
+    UpdatePriceComponent,
+    BookAddToBagComponent,
+    UploadBookimageComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,8 +84,15 @@ import { UpdateBookComponent } from "./component/update-book/update-book.compone
     FlexLayoutModule,
     MatTooltipModule,
     MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
-  entryComponents: [AddbookComponent, UpdateBookComponent],
+  entryComponents: [
+    AddbookComponent,
+    UpdateBookComponent,
+    UploadBookimageComponent,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
