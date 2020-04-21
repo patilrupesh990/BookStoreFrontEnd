@@ -42,10 +42,11 @@ form {
   width: auto;
 }
 button {
-  background-color: mediumslateblue;
+  background-color: rgb(136, 4, 4);
   font-size: 20px;
   font-weight: bold;
   color: white;
+  height: 50px;
 }
 .submit {
   display: flex;
@@ -53,4 +54,22 @@ button {
   align-content: center;
   padding-top: 30px;
   margin-left: 40px;
+}
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: rgba(61, 60, 61, 0.692);
+  font-size: medium;
+  font-weight: bolder;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: pink;
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: pink;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: pink;
 }

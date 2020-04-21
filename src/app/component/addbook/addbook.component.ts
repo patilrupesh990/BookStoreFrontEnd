@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar, MatDialog, MatDialogRef } from "@angular/material";
 import { BookService } from "src/app/shared/service/book.service";
+import { UploadBookimageComponent } from "./upload-bookimage/upload-bookimage.component";
 
 @Component({
   selector: "app-addbook",
@@ -10,11 +11,13 @@ import { BookService } from "src/app/shared/service/book.service";
 })
 export class AddbookComponent implements OnInit {
   bookForm: FormGroup;
-
+  bookid;
   constructor(
     private matSnackBar: MatSnackBar,
     private formBuilder: FormBuilder,
-    private bookService: BookService
+    private bookService: BookService,
+    private dialog: MatDialog,
+    private dialogRef: MatDialogRef<AddbookComponent>
   ) {}
 
   ngOnInit() {
@@ -33,6 +36,7 @@ export class AddbookComponent implements OnInit {
         this.matSnackBar.open("Book Added SuccessFully", "ok", {
           duration: 4000,
         });
+        this.dialogRef.close(1);
       },
       (error: any) => {
         this.matSnackBar.open(error.error, "ok", { duration: 4000 });
