@@ -3,13 +3,14 @@
   flex-direction: row;
   margin-top: 1%;
   margin-left: 10%;
+  height: auto;
   margin-right: 10%;
   justify-content: space-between;
 }
 .main-container {
-  height: 100%;
+  height: auto;
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -86,7 +87,7 @@ mat-card-title {
   font-size: medium;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
-  color: rgb(8, 8, 8);
+  color: rgb(184, 5, 5);
 }
 .cart-buttons {
   display: flex;

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="title">
       Books
-      <span style="font-size: 15px; color: rgb(190, 186, 186);"
+      <span style="font-size: 15px; color: rgb(139, 136, 136);"
         >({{ size }} items)</span
       >
     </div>
@@ -11,6 +11,9 @@
         <mat-form-field appearance="outline">
           <mat-label>sort by relevance</mat-label>
           <mat-select [(ngModel)]="selectedValue" name="food">
+            <mat-option>
+              Choose Relevance
+            </mat-option>
             <mat-option>
               Price:High To Low
             </mat-option>
@@ -34,12 +37,15 @@
       *ngFor="let book of books"
       fxLayout="{{ view }}"
       [fxLayoutAlign]="center"
-      fxFlexOffset="5"
+      fxFlexOffset="4"
     >
       <mat-card matTooltip="{{ book.bookDetails }}">
         <mat-card-title
+          *ngIf="isSeller"
+          (click)="openImageDialog(book.bookId)"
+          matTooltip="Update Image"
           ><img
-            src="assets\booklogoimg.jpg"
+            src="{{ book.bookImage }}"
             style="
               height: 150px;
               width: 120px;
@@ -50,6 +56,20 @@
             "
           />
         </mat-card-title>
+        <mat-card-title *ngIf="isUser" matTooltip="Book Image"
+          ><img
+            src="{{ book.bookImage }}"
+            style="
+              height: 150px;
+              width: 120px;
+              margin-left: 55px;
+              margin-right: 55px;
+              padding-top: 20px;
+              padding-bottom: 20px;
+            "
+          />
+        </mat-card-title>
+
         <mat-card-content
           ><div class="bookname">{{ book.bookName }}</div>
           <div class="authorname">by {{ book.authorName }}</div>

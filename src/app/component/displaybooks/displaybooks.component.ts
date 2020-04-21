@@ -10,6 +10,7 @@ import { UserService } from "src/app/shared/service/user.service";
 import { AddbookComponent } from "../addbook/addbook.component";
 import { CartServiceService } from "src/app/shared/service/cart-service.service";
 import { UpdateBookComponent } from "../update-book/update-book.component";
+import { UploadBookimageComponent } from "../addbook/upload-bookimage/upload-bookimage.component";
 
 @Component({
   selector: "app-displaybooks",
@@ -26,12 +27,8 @@ export class DisplaybooksComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private formBuilder: FormBuilder,
     private matSnackBar: MatSnackBar,
-    private router: Router,
-    private route: ActivatedRoute,
     private bookService: BookService,
-    private httpClient: HttpClient,
     private userService: UserService,
     private cartService: CartServiceService
   ) {
@@ -73,13 +70,25 @@ export class DisplaybooksComponent implements OnInit {
         duration: 4000,
       });
     });
-    this.matSnackBar.open("Error in Book Deletion", "ok", { duration: 4000 });
+    // this.matSnackBar.open("Error in Book Deletion", "ok", { duration: 4000 });
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddbookComponent, {
       width: "auto",
       panelClass: "custom-dialog-container",
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
+  }
+
+  openImageDialog(bookId): void {
+    // this.bookid = this.bookForm.controls["bookCode"].value;
+    const dialogRef = this.dialog.open(UploadBookimageComponent, {
+      width: "auto",
+      panelClass: "custom-dialog-container",
+      data: { bookId },
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed");
