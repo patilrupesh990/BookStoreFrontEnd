@@ -4,6 +4,7 @@
   fullscreen
 >
   <mat-toolbar-row>
+    <!-- <img src="assets\LOGO11.png" class="logo" /> -->
     <img src="assets\booklogo_1_45x45.png" class="logo" />
     <span class="title">BookStore</span>
     <div class="search">
@@ -22,8 +23,8 @@
         </div>
       </mat-card>
     </div>
-    <div class="cart">
-      <a
+    <div class="cart" *ngIf="isUser">
+      <a routerLink="/cart"
         ><img
           src="assets\cart-icon-png-26.jpg"
           style="
