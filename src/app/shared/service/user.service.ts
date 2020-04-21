@@ -49,6 +49,15 @@ export class UserService {
     );
   }
 
+  activateUser(user: any, token: string): Observable<any> {
+    console.log("calling to.." + `${this.activateUser}/${token}`);
+    return this.httpservice.put(
+      `${environment.userApiUrl}/${environment.activateUser}/${token}`,
+      user,
+      { responseType: "text" }
+    );
+  }
+
   setQueryParam(message: any) {
     this.queryParam.next({ id: message });
   }
