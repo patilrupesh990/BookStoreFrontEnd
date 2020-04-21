@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="center center" class="medium-list">
-  <mat-card style="box-shadow: 1px 2px 4px 2px; opacity: 0.8;">
+  <mat-card style="box-shadow: 1px 2px 4px 2px; background-color: whitesmoke;">
     <mat-card-title
       class="row threed"
       style="
@@ -17,6 +17,34 @@
     </mat-card-title>
     <form [formGroup]="loginForm" (ngSubmit)="(loginForm.valid)" noval>
       <mat-card-content fxLayout="column">
+        <div class="social-login">
+          <div style="margin-right: 20px;">
+            <a
+              ><img
+                src="assets\FbLogin.png"
+                style="
+                  color: rgb(8, 8, 8);
+                  height: 60px;
+                  width: 60px;
+                  border-radius: 55%;
+                  border: 3px solid;
+                "
+            /></a>
+          </div>
+          <div>
+            <a
+              ><img
+                src="assets\Google__G__Logo.svg"
+                style="
+                  color: black;
+                  height: 60px;
+                  width: 60px;
+                  border-radius: 50%;
+                  border: 2px solid;
+                "
+            /></a>
+          </div>
+        </div>
         <mat-card-subtitle
           style="
             font-style: unset;
