@@ -5,13 +5,16 @@ export const environment = {
   userLoginUrl: "login",
   sellerLoginUrl: "seller-login",
   sellerRegister: "seller-register",
+  activateUser: "activ",
 
   bookApiUrl: "http://localhost:8091/books",
   getBooksList: "getAllBooks",
   getSellerBookList: "sellerBooks",
   addbook: "add",
   deleteBook: "delete",
+  addBookImage: "upload",
 
   cartApiUrl: "http://localhost:8091/orders",
   addToBag: "make-order",
+  cartList: "cart-list",
 };
