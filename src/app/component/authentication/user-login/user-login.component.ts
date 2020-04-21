@@ -57,8 +57,7 @@ export class UserLoginComponent implements OnInit {
       },
       (error: any) => {
         this.showSpinner = false;
-        console.log(error.error.response);
-        this.matSnackBar.open(error.error.response, "ok", {
+        this.matSnackBar.open(error.error.error, "ok", {
           duration: 3000,
         });
       }
@@ -80,7 +79,7 @@ export class UserLoginComponent implements OnInit {
       },
       (error: any) => {
         this.showSpinner = false;
-        this.matSnackBar.open(error.error.response, "ok", {
+        this.matSnackBar.open(error.error.error, "ok", {
           duration: 3000,
         });
       }
