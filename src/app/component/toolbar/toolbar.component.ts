@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { UserService } from "src/app/shared/service/user.service";
+import { BookService } from "src/app/shared/service/book.service";
 
 @Component({
   selector: "app-toolbar",
@@ -12,7 +13,11 @@ export class ToolbarComponent implements OnInit {
   id: any;
   isUser = false;
   isSeller = false;
-  constructor(private userService: UserService) {
+  bookName: string;
+  constructor(
+    private userService: UserService,
+    private bookService: BookService
+  ) {
     this.name = sessionStorage.firstName + sessionStorage.lastName;
     this.userService.getQueryParam().subscribe((message) => {
       this.id = message.id;
@@ -30,5 +35,9 @@ export class ToolbarComponent implements OnInit {
   onClickClear() {
     sessionStorage.clear();
     localStorage.clear();
+  }
+  bookSearch() {
+    // console.log(this.bookName);
+    this.bookService.setSearchBookData(this.bookName);
   }
 }
