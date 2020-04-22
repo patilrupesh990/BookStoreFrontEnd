@@ -34,7 +34,7 @@
   <div class="list-books">
     <div
       class="getAllNotes"
-      *ngFor="let book of books"
+      *ngFor="let book of books | bookSearch: bookSearch"
       fxLayout="{{ view }}"
       [fxLayoutAlign]="center"
       fxFlexOffset="4"

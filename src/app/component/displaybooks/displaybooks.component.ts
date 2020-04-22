@@ -24,6 +24,7 @@ export class DisplaybooksComponent implements OnInit {
   isUser = false;
   isSeller = false;
   toggle = true;
+  bookSearch: any;
 
   constructor(
     private dialog: MatDialog,
@@ -53,6 +54,8 @@ export class DisplaybooksComponent implements OnInit {
       this.books = message.bookList;
       this.size = message.bookList.length;
     });
+
+    this.getSearchBookData();
   }
 
   getSellerBook() {
@@ -112,6 +115,16 @@ export class DisplaybooksComponent implements OnInit {
       this.matSnackBar.open("Book Added to Bag SuccessFully", "OK", {
         duration: 4000,
       });
+    });
+  }
+
+  getSearchBookData() {
+    this.bookService.getSearchBookData().subscribe((message) => {
+      console.log("search data", message.books);
+      this.bookSearch = message.books;
+      if (message.books == "") {
+        // this.books=false;
+      }
     });
   }
 }
