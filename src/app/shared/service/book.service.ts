@@ -16,7 +16,7 @@ import { tap, map, catchError } from "rxjs/operators";
 })
 export class BookService {
   private _autoRefresh$ = new Subject();
-
+  private searchBookData = new Subject<any>();
   private httpOtions = {
     headers: new HttpHeaders({ "content-type": "application/json" }),
   };
@@ -75,9 +75,6 @@ export class BookService {
       case HttpEventType.Response:
         return this.apiResponse(event);
       default:
-      // return `File "${formData.get("image").name}" supricing upload event:${
-      //   event.type
-      // }.`;
     }
   }
 
@@ -101,5 +98,14 @@ export class BookService {
           this._autoRefresh$.next();
         })
       );
+  }
+
+  setSearchBookData(message: any) {
+    console.log("set service", message);
+    return this.searchBookData.next({ books: message });
+  }
+  getSearchBookData(): Observable<any> {
+    console.log("get service");
+    return this.searchBookData.asObservable();
   }
 }
