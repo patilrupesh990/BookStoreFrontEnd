@@ -6,7 +6,7 @@ export class Order {
   userId: number;
 
   bookName: string;
-
+  bookImage: string;
   quantity: number;
 
   price: number;
