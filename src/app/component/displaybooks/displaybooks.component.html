@@ -10,18 +10,21 @@
       <form>
         <mat-form-field appearance="outline">
           <mat-label>sort by relevance</mat-label>
-          <mat-select [(ngModel)]="selectedValue" name="food">
-            <mat-option>
-              Choose Relevance
+          <mat-select
+            [(value)]="selectedOption"
+            (selectionChange)="onclicksort()"
+          >
+            <mat-option value="none">
+              sort by relevance
             </mat-option>
-            <mat-option>
+            <mat-option value="Price:High To Low">
               Price:High To Low
             </mat-option>
-            <mat-option>
+            <mat-option value="Price:Low To High">
               Price:Low To High
             </mat-option>
-            <mat-option>
-              Newest Arrival
+            <mat-option value="By Book Name">
+              By Book Name
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -34,7 +37,12 @@
   <div class="list-books">
     <div
       class="getAllNotes"
-      *ngFor="let book of books | bookSearch: bookSearch"
+      *ngFor="
+        let book of books
+          | bookSearch: bookSearch
+          | sortbyprice: sortbyprice
+          | paginate: { itemsPerPage: 10, currentPage: page, id: 'first' }
+      "
       fxLayout="{{ view }}"
       [fxLayoutAlign]="center"
       fxFlexOffset="4"
@@ -74,8 +82,17 @@
           ><div class="bookname">{{ book.bookName }}</div>
           <div class="authorname">by {{ book.authorName }}</div>
           <div class="price">Rs. {{ book.price }}</div>
-          <div class="availablity">Available Books: {{ book.quantity }}</div>
-          <div class="cart-buttons" *ngIf="isUser">
+          <div
+            class="availablity"
+            style="font-size: large;"
+            *ngIf="!book.quantity"
+          >
+            Out Of stock
+          </div>
+          <div class="availablity" style="color: blue;" *ngIf="book.quantity">
+            Available Books: {{ book.quantity }}
+          </div>
+          <div class="cart-buttons" *ngIf="isUser && book.quantity">
             <div>
               <button
                 [style.background-color]="toggle ? 'green' : 'red'"
@@ -101,6 +118,14 @@
           </div>
         </mat-card-content>
       </mat-card>
+    </div>
+  </div>
+  <div>
+    <div class="paginator">
+      <pagination-controls
+        (pageChange)="page = $event"
+        id="first"
+      ></pagination-controls>
     </div>
   </div>
 </div>

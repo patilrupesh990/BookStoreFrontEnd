@@ -19,13 +19,15 @@ import { UploadBookimageComponent } from "../addbook/upload-bookimage/upload-boo
 })
 export class DisplaybooksComponent implements OnInit {
   books: any;
-  size: any;
+  size: number;
   id: any;
   isUser = false;
   isSeller = false;
   toggle = true;
   bookSearch: any;
-
+  selectedOption: any;
+  sortbyprice = "none";
+  page: number = 1;
   constructor(
     private dialog: MatDialog,
     private matSnackBar: MatSnackBar,
@@ -43,6 +45,10 @@ export class DisplaybooksComponent implements OnInit {
         this.isSeller = true;
         this.getSellerBook();
       }
+    });
+    this.bookService.autoRefresh$.subscribe(() => {
+      this.getAllBookList();
+      this.getSellerBook();
     });
   }
 
@@ -64,6 +70,7 @@ export class DisplaybooksComponent implements OnInit {
       this.books = message.bookList;
       this.size = message.bookList.length;
     });
+    this.getSearchBookData();
   }
   addBook() {}
 
@@ -122,9 +129,13 @@ export class DisplaybooksComponent implements OnInit {
     this.bookService.getSearchBookData().subscribe((message) => {
       console.log("search data", message.books);
       this.bookSearch = message.books;
-      if (message.books == "") {
-        // this.books=false;
-      }
     });
+  }
+  onclicksort() {
+    if (this.selectedOption === "none") {
+      this.ngOnInit();
+    }
+    this.sortbyprice = this.selectedOption;
+    console.log(this.sortbyprice);
   }
 }

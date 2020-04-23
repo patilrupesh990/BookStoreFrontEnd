@@ -4,17 +4,25 @@
   margin-top: 1%;
   margin-left: 10%;
   height: auto;
+  overflow-y: hidden;
   margin-right: 10%;
   justify-content: space-between;
 }
 .main-container {
-  height: auto;
+  height: 100%;
   width: 100%;
-  overflow-y: auto;
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
 }
-
+.paginator {
+  display: flex;
+  width: 100%;
+  align-content: center;
+  align-items: center;
+  font-size: x-large;
+  margin-top: 20px;
+}
 .title {
   font-size: 25px;
   font-weight: bolder;
