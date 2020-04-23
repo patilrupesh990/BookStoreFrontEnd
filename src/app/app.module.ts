@@ -43,7 +43,9 @@ import { BookAddToBagComponent } from "./component/book-add-to-bag/book-add-to-b
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { UploadBookimageComponent } from "./component/addbook/upload-bookimage/upload-bookimage.component";
-
+import { BookSearchPipe } from "./pipe/book-search.pipe";
+import { NgxPaginationModule } from "ngx-pagination";
+import { SortbypricePipe } from './pipe/sortbyprice.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +61,8 @@ import { UploadBookimageComponent } from "./component/addbook/upload-bookimage/u
     UpdatePriceComponent,
     BookAddToBagComponent,
     UploadBookimageComponent,
+    BookSearchPipe,
+    SortbypricePipe,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +91,8 @@ import { UploadBookimageComponent } from "./component/addbook/upload-bookimage/u
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    NgxPaginationModule,
+    MatPaginatorModule,
   ],
   entryComponents: [
     AddbookComponent,
