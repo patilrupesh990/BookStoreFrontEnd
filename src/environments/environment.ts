@@ -17,4 +17,5 @@ export const environment = {
   cartApiUrl: "http://localhost:8091/orders",
   addToBag: "make-order",
   cartList: "cart-list",
+  deleteOrder: "remove-order",
 };
