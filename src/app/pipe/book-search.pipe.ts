@@ -6,6 +6,7 @@ import { Book } from "../shared/model/book.model";
 })
 export class BookSearchPipe implements PipeTransform {
   transform(books: Book[], searchTerm: string): Book[] {
+    console.log(searchTerm);
     if (!books || !searchTerm) {
       return books;
     }
