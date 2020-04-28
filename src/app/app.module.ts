@@ -23,6 +23,7 @@ import {
   MatOptionModule,
   MatSelectModule,
   MatTableModule,
+  MatStepperModule,
 } from "@angular/material";
 import { ReactiveFormsModule, FormBuilder, FormsModule } from "@angular/forms";
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -39,13 +40,13 @@ import { UpdateBookComponent } from "./component/update-book/update-book.compone
 import { ActivateUserComponent } from "./component/authentication/activate-user/activate-user.component";
 import { BooksCartComponent } from "./component/books-cart/books-cart.component";
 import { UpdatePriceComponent } from "./component/update-book/update-price/update-price.component";
-import { BookAddToBagComponent } from "./component/book-add-to-bag/book-add-to-bag.component";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { UploadBookimageComponent } from "./component/addbook/upload-bookimage/upload-bookimage.component";
 import { BookSearchPipe } from "./pipe/book-search.pipe";
 import { NgxPaginationModule } from "ngx-pagination";
-import { SortbypricePipe } from './pipe/sortbyprice.pipe';
+import { SortbypricePipe } from "./pipe/sortbyprice.pipe";
+import { OrderplaceGreentingComponent } from "./component/orderplace-greenting/orderplace-greenting.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,10 +60,10 @@ import { SortbypricePipe } from './pipe/sortbyprice.pipe';
     ActivateUserComponent,
     BooksCartComponent,
     UpdatePriceComponent,
-    BookAddToBagComponent,
     UploadBookimageComponent,
     BookSearchPipe,
     SortbypricePipe,
+    OrderplaceGreentingComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +94,7 @@ import { SortbypricePipe } from './pipe/sortbyprice.pipe';
     MatSortModule,
     NgxPaginationModule,
     MatPaginatorModule,
+    MatStepperModule,
   ],
   entryComponents: [
     AddbookComponent,
