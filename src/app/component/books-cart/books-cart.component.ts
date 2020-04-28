@@ -91,12 +91,48 @@ export class BooksCartComponent implements OnInit {
       });
     });
   }
-  increaseQuantity() {
-    this.quantity = this.quantity + 1;
+  increaseQuantity(order) {
+    console.log(order);
+
+    this.orders.forEach((fetchedBook) => {
+      if (fetchedBook.bookId == order.bookId) {
+        order.quantity = order.quantity + 1;
+      }
+    });
+
+    this.cartService.updateOrderQuantity(order).subscribe(
+      (message) => {
+        console.log(message);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
-  decreseQuantity() {
-    if (this.quantity > 1) {
-      this.quantity = this.quantity - 1;
+  decreseQuantity(order) {
+    console.log(order);
+    if (order.quantity > 0) {
+      this.orders.forEach((fetchedBook) => {
+        if (fetchedBook.bookId == order.bookId) {
+          order.quantity = order.quantity - 1;
+          console.log("quantity updated", order.quantity);
+        }
+      });
+
+      this.cartService.updateOrderQuantity(order).subscribe(
+        (message) => {
+          console.log(message);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.cartService.removeFromeBag(order.bookId).subscribe((message) => {
+        this.matSnackBar.open("Book Removed From Cart", "OK", {
+          duration: 4000,
+        });
+      });
     }
   }
 
@@ -113,6 +149,10 @@ export class BooksCartComponent implements OnInit {
     this.cusomerDetails.landMark = this.customerForm.controls.landMark.value;
     this.cusomerDetails.address = this.customerForm.controls.address.value;
     console.log(this.cusomerDetails);
+    this.setCustomerDetails();
     this.route.navigate(["greeting"]);
+  }
+  setCustomerDetails() {
+    this.cartService.setCustomerDetails(this.cusomerDetails);
   }
 }
