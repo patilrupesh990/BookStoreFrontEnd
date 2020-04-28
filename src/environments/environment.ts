@@ -18,4 +18,5 @@ export const environment = {
   addToBag: "make-order",
   cartList: "cart-list",
   deleteOrder: "remove-order",
+  updateQuantity: "update-quantity",
 };
