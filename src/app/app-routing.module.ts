@@ -6,7 +6,7 @@ import { DashboardComponent } from "./component/dashboard/dashboard.component";
 import { DisplaybooksComponent } from "./component/displaybooks/displaybooks.component";
 import { ActivateUserComponent } from "./component/authentication/activate-user/activate-user.component";
 import { BooksCartComponent } from "./component/books-cart/books-cart.component";
-import { BookAddToBagComponent } from "./component/book-add-to-bag/book-add-to-bag.component";
+import { OrderplaceGreentingComponent } from "./component/orderplace-greenting/orderplace-greenting.component";
 
 const routes: Routes = [
   { path: "register", component: RegistrationComponent },
@@ -21,6 +21,7 @@ const routes: Routes = [
   },
   { path: "activate/:token", component: ActivateUserComponent },
   { path: "cart", component: BooksCartComponent },
+  { path: "greeting", component: OrderplaceGreentingComponent },
 ];
 
 @NgModule({
