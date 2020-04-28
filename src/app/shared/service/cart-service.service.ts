@@ -10,7 +10,7 @@ import { tap } from "rxjs/operators";
 })
 export class CartServiceService {
   private _autoRefresh$ = new Subject();
-
+  private customerDetails = new Subject<any>();
   get autoRefresh$() {
     return this._autoRefresh$;
   }
@@ -41,5 +41,22 @@ export class CartServiceService {
       `${environment.cartApiUrl}/${environment.cartList}`,
       { headers: new HttpHeaders().set("token", sessionStorage.token) }
     );
+  }
+  updateOrderQuantity(order): Observable<any> {
+    return this.httpservice
+      .put(`${environment.cartApiUrl}/${environment.updateQuantity}`, order, {
+        headers: new HttpHeaders().set("token", sessionStorage.token),
+      })
+      .pipe(
+        tap(() => {
+          this._autoRefresh$.next();
+        })
+      );
+  }
+  setCustomerDetails(message: any) {
+    this.customerDetails.next({ customer: message });
+  }
+  getCustomerDetails(): Observable<any> {
+    return this.customerDetails.asObservable();
   }
 }
