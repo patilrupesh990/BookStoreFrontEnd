@@ -294,7 +294,7 @@
       </div>
 
       <div *ngIf="!cosForm" class="ch-btn">
-        <button (click)="openCustomerDeatilsForm()">Continue</button>
+        <button (click)="openCustomerDeatilsForm()">Place Order</button>
       </div>
       <!-- <div *ngIf="cosForm" class="ch-btn">
         <button
@@ -338,7 +338,7 @@
           {{ order.quantity }}
         </div>
         <div class="summery-quantity-data" fxLayoutAlign="start center">
-          ₹.{{ order.price }}
+          ₹.{{ order.total }}
         </div>
       </div>
       <hr />

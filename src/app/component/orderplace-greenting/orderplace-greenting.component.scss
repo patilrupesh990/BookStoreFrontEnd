@@ -3,6 +3,11 @@ body {
   width: 100%;
   //   background-image: url("../../assets/greeting.png");
 }
+.container {
+  height: 100%;
+  width: 100%;
+  background-image: url(~src\assets\confetti.gif);
+}
 .greeting1 {
   margin-top: 50px;
   height: auto;
@@ -52,7 +57,7 @@ body {
 }
 .email {
   height: 8rem;
-  width: 12rem;
+  width: 16rem;
 }
 mat-card-content {
   padding: 30px;

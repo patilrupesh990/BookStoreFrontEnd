@@ -67,6 +67,7 @@ export class BooksCartComponent implements OnInit {
       this.orderList.paginator = this.paginator;
     });
     this.getOrderList();
+    this.setBudgetTotal();
   }
 
   get f() {
@@ -151,8 +152,16 @@ export class BooksCartComponent implements OnInit {
     console.log(this.cusomerDetails);
     this.setCustomerDetails();
     this.route.navigate(["greeting"]);
+    this.cartService.confirmOrder(this.orders).subscribe((message) => {
+      this.matSnackBar.open("Order Placed Successfully", "OK", {
+        duration: 4000,
+      });
+    });
   }
   setCustomerDetails() {
     this.cartService.setCustomerDetails(this.cusomerDetails);
+  }
+  setBudgetTotal() {
+    this.cartService.setBudgetTotal(this.orders.size());
   }
 }

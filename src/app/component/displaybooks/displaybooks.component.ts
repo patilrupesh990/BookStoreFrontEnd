@@ -28,6 +28,7 @@ export class DisplaybooksComponent implements OnInit {
   selectedOption: any;
   sortbyprice = "none";
   page: number = 1;
+  budgetTotal;
   constructor(
     private dialog: MatDialog,
     private matSnackBar: MatSnackBar,
@@ -50,6 +51,9 @@ export class DisplaybooksComponent implements OnInit {
       this.getAllBookList();
       this.getSellerBook();
     });
+
+    this.setBudgetTotal();
+    this.getCartItems();
   }
 
   ngOnInit() {}
@@ -122,6 +126,7 @@ export class DisplaybooksComponent implements OnInit {
       this.matSnackBar.open("Book Added to Bag SuccessFully", "OK", {
         duration: 4000,
       });
+      this.setBudgetTotal();
     });
   }
 
@@ -137,5 +142,16 @@ export class DisplaybooksComponent implements OnInit {
     }
     this.sortbyprice = this.selectedOption;
     console.log(this.sortbyprice);
+  }
+
+  getCartItems() {
+    this.cartService.getCartList().subscribe((message) => {
+      console.log("sss");
+      this.budgetTotal = message.orders.length;
+    });
+  }
+  setBudgetTotal() {
+    this.getCartItems();
+    this.cartService.setBudgetTotal(this.budgetTotal);
   }
 }

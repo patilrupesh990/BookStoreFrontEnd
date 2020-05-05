@@ -2,18 +2,33 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html,
-body {
+html {
   box-sizing: border-box;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  overflow: auto;
+  overflow-y: hidden;
   min-height: 100%;
   height: 100%;
   width: 100%;
   margin: 0px;
   padding: 0px;
 }
-
+body {
+  box-sizing: border-box;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: auto;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.mat-paginator-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  font-size: x-large;
+  color: rgb(123, 123, 138);
+}
 .custom-dialog-container-label {
   mat-dialog-container {
     padding: 10px;

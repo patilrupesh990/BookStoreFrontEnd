@@ -11,6 +11,8 @@ import { tap } from "rxjs/operators";
 export class CartServiceService {
   private _autoRefresh$ = new Subject();
   private customerDetails = new Subject<any>();
+  private setbugetTotal = new Subject<any>();
+
   get autoRefresh$() {
     return this._autoRefresh$;
   }
@@ -21,6 +23,10 @@ export class CartServiceService {
       `${environment.cartApiUrl}/${environment.addToBag}?bookId=${id}&qty=${quantity}`,
       {},
       { headers: new HttpHeaders().set("token", sessionStorage.token) }
+    ).pipe(
+      tap(() => {
+        this._autoRefresh$.next();
+      })
     );
   }
   removeFromeBag(id): Observable<any> {
@@ -53,10 +59,28 @@ export class CartServiceService {
         })
       );
   }
+  confirmOrder(order): Observable<any> {
+    console.log(order);
+    return this.httpservice
+      .put(`${environment.cartApiUrl}/${environment.confirmOrder}`, order, {
+        headers: new HttpHeaders().set("token", sessionStorage.token),
+      })
+      .pipe(
+        tap(() => {
+          this._autoRefresh$.next();
+        })
+      );
+  }
   setCustomerDetails(message: any) {
     this.customerDetails.next({ customer: message });
   }
   getCustomerDetails(): Observable<any> {
     return this.customerDetails.asObservable();
+  }
+  setBudgetTotal(message: any) {
+    return this.setbugetTotal.next({ total: message });
+  }
+  getBudgetTotal(): Observable<any> {
+    return this.setbugetTotal.asObservable();
   }
 }

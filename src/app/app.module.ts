@@ -24,6 +24,8 @@ import {
   MatSelectModule,
   MatTableModule,
   MatStepperModule,
+  MatBadge,
+  MatBadgeModule,
 } from "@angular/material";
 import { ReactiveFormsModule, FormBuilder, FormsModule } from "@angular/forms";
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -95,6 +97,7 @@ import { OrderplaceGreentingComponent } from "./component/orderplace-greenting/o
     NgxPaginationModule,
     MatPaginatorModule,
     MatStepperModule,
+    MatBadgeModule,
   ],
   entryComponents: [
     AddbookComponent,
