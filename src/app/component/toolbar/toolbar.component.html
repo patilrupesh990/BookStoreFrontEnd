@@ -5,6 +5,9 @@
 >
   <mat-toolbar-row>
     <!-- <img src="assets\LOGO11.png" class="logo" /> -->
+    <!-- <div fxLayoutAlign="center center">
+      <button><mat-icon>home</mat-icon></button>
+    </div> -->
     <img src="assets\booklogo_1_45x45.png" class="logo" />
     <span class="title">BookStore</span>
     <div class="search">
@@ -24,18 +27,41 @@
       </mat-card>
     </div>
     <div class="cart" *ngIf="isUser">
-      <a routerLink="/cart"
-        ><img
+      <a routerLink="/cart">
+        <!-- <span
+          *ngIf="!isbudget"
+          style="margin-left: 80px; padding-bottom: 80px;"
+          matBadge="{{ totalItem }}"
+        ></span>
+        <span
+          *ngIf="isbudget"
+          style="margin-left: 80px; padding-bottom: 80px;"
+          matBadge="{{ totalItem }}"
+        ></span>
+        <img
           src="assets\cart-icon-png-26.jpg"
           style="
-            margin-left: 80px;
+          
             margin-top: 15px;
             color: grey;
             height: 50px;
             width: 50px;
             padding-left: 0.5em;
           "
-      /></a>
+      />-->
+        <mat-icon
+          style="
+            margin-top: 20px;
+            margin-left: 80px;
+            color: #fff;
+            font-size: 40px;
+            padding-left: 0.5em;
+          "
+          matBadge="{{ totalItem }}"
+          matBadgeSize="small"
+          >add_shopping_cart</mat-icon
+        >
+      </a>
     </div>
     <div class="last-icon">
       <a
